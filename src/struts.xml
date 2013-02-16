@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+
+	<package name="default" extends="struts-default">
+		<default-action-ref name="notFound" />
+		<action name="notFound">
+			<result>/index.jsp</result>
+		</action>
+	</package>
+
+	<package name="analysis" extends="struts-default" namespace="/analysis">
+
+		<action name="chooseComponent" class="edu.indiana.htrc.action.ChooseComponentAction"
+			method="execute">
+
+			<result name="success">${page}</result>
+
+		</action>
+
+		<action name="dataAPIGeneralInfo"
+			class="edu.indiana.htrc.action.auditlog.DataAPIGeneralAnalysisAction" method="execute">
+
+			<result name="success">${display}</result>
+
+		</action>
+		
+		<action name="solrProxyAPIGeneralInfo"
+			class="edu.indiana.htrc.action.solrproxylog.SolrProxyAPIGeneralAnalysisAction" method="execute">
+
+			<result name="success">${display}</result>
+
+		</action>
+		
+
+		<action name="dataAPIUserInfo"
+			class="edu.indiana.htrc.action.auditlog.DataAPIUserAnalysisAction" method="execute">
+
+			<result name="success">${display}</result>
+
+		</action>
+
+		<action name="dataAPIIPInfo"
+			class="edu.indiana.htrc.action.auditlog.DataAPIsourceIPAnalysisAction" method="execute">
+
+			<result name="success">${display}</result>
+
+		</action>
+
+		<action name="dataAPIGeneralInfoJS"
+			class="edu.indiana.htrc.action.auditlog.DataAPIUserAnalysisActionJS" method="execute">
+
+			<result name="success">${display}</result>
+
+		</action>
+
+		<action name="dataAPIRealTime"
+			class="edu.indiana.htrc.action.realtime.DataAPIAccessRealTimeMonitorAction"
+			method="execute">
+			<result type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<action name="solrProxyRealTime"
+			class="edu.indiana.htrc.action.realtime.SolrProxyAccessRealTimeMonitorAction"
+			method="execute">
+			<result type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<action name="pass2DataAPIRealTime"
+			class="edu.indiana.htrc.action.realtime.DataAPIPass2RealTimeAction">
+			<result name="success">/pages/dynamicDataAPIChart.jsp</result>
+		</action>
+		
+		<action name="pass2SolrProxyRealTime"
+			class="edu.indiana.htrc.action.realtime.SolrProxyPass2RealTimeAction">
+			<result name="success">/pages/dynamicSolrProxyChart.jsp</result>
+		</action>
+
+		<action name="ajaxRealTime" class="test.AjaxJsonAction">
+			<result type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+		<action name="tmpAction" class="test.TmpAction">
+			<result name="success">/pages/realtime.jsp</result>
+		</action>
+	</package>
+
+</struts>
