@@ -49,7 +49,12 @@
 			<result name="success">${display}</result>
 
 		</action>
+		<action name="SolrProxySourceIPInfo"
+			class="edu.indiana.htrc.action.solrproxylog.SolrProxysourceIPAnalysisAction" method="execute">
 
+			<result name="success">${display}</result>
+
+		</action>
 		<action name="dataAPIGeneralInfoJS"
 			class="edu.indiana.htrc.action.auditlog.DataAPIUserAnalysisActionJS" method="execute">
 
