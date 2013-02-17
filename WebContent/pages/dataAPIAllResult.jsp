@@ -65,7 +65,7 @@
  
 	if (data_array[0].length != 0) {
 		google.setOnLoadCallback(function() {
-			drawColumnChart(1, "LINE", data_array[0], "Z Time Date");
+			drawColumnChart(1, "LINE", data_array[0], "Zulu Time Series");
 		});
 	}
 /*	if (data_array[1].length != 0) {
@@ -99,18 +99,39 @@
 		// Create the data table.
 		var data = new google.visualization.DataTable();
 		data.addColumn('string', 'Time');
-		data.addColumn('number', 'Access_count');
+		data.addColumn('number', 'Request Count');
 		data.addRows(dataSet);
 
+		
+		var chartTitle;
+		if(info == "Zulu Time Series"){
+			chartTitle='Data API Daily Request Count Information from <s:property value="from"/> to <s:property value="to"/>';
+		}else if(info == "SOURCE_IP"){
+			chartTitle = 'Data API Request Count Information for Source IPs from <s:property value="from"/> to <s:property value="to"/>';
+		}else if(info=="USER_NAME"){
+			chartTitle = 'Data API Request Count Information for Users from <s:property value="from"/> to <s:property value="to"/>';
+		}else if(info == "RESPONSE_STATUS"){
+			chartTitle='Response Status information for Data API Requests from <s:property value="from"/> to <s:property value="to"/>';
+		}
+		
 		// Set chart options
 		var options = { is3D:true,
-			'title' : info+' ACCESS INFO of <s:property value="userName"/><s:property value="sourceIP"/> from <s:property value="from"/> to <s:property value="to"/>',
+			'title' : chartTitle /*info+' ACCESS INFO of <s:property value="userName"/><s:property value="sourceIP"/> from <s:property value="from"/> to <s:property value="to"/>'*/,
 			'width' : 1500,
 			'height' : 600,
+			'titleTextStyle':{
+				color: 'black', fontName:'Arial', fontSize: 26
+			},
 			hAxis : {
 				title : info
 			},
-			vAxis:{viewWindow: {min: 0}}
+			vAxis:{
+				viewWindow: {min: 0},
+				title : "Data API Request Count",
+				'titleTextStyle':{
+					color: 'black', fontName:'Arial', fontSize: 24
+				}
+			}
 		};
 		// Instantiate and draw our chart, passing in some options.
 		var chart;
@@ -133,7 +154,7 @@
 	<div id="chart_div3"></div>
 	<div id="chart_div4"></div>
 	
-	<a href="http://localhost:8080/HTRC-UI-AuditAnalyze/">go back</a>
+	<a href="http://localhost:8080/HTRC-UI-AuditAnalyzer/">go back</a>
 	<s:debug />
 </body>
 </html>
