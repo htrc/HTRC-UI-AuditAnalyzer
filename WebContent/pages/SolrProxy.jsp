@@ -3,8 +3,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
 <title>Solr Proxy API Analysis</title>
+<link href="../pages/flot/calendar.css" rel="stylesheet" type="text/css">
+ 
+<table class="ds_box" cellpadding="0" cellspacing="0" id="ds_conclass" style="display: none;">
+<tr><td id="ds_calclass">
+</td></tr>
+</table>
+<script language="javascript" type="text/javascript" src="../pages/flot/calendar.js"></script>
 </head>
 <body>
 <table width="1895" border="1">
@@ -16,10 +22,12 @@
           <label for="name">Please enter your interested time period:</label>
           <br/>
           <label for="from">Enter start time:</label>
-        <input type="date" name="from"/>
+       <!--  <input type="date" name="from"/> -->
+         <input onclick="ds_sh(this);" name="from" readonly="readonly" style="cursor: text" />
         <br/>
         <label for="to">Enter end time:</label>
-        <input type="date" name="to"/>
+        <!-- <input type="date" name="to"/> -->
+         <input onclick="ds_sh(this);" name="to" readonly="readonly" style="cursor: text" />
       </p>
 <p>check the following boxes for your interested information:</p>
         <p>
@@ -46,23 +54,25 @@
           <label for="name">Please enter your interested time period:</label>
           <br/>
           <label for="from">Enter start time:</label>
-          <input type="date" name="from"/>
+         <!--  <input type="date" name="from"/> -->
+          <input onclick="ds_sh(this);" name="from" readonly="readonly" style="cursor: text" />
           <br/>
           <label for="to">Enter end time:</label>
-          <input type="date" name="to"/>
+        <!--   <input type="date" name="to"/> -->
+          <input onclick="ds_sh(this);" name="to" readonly="readonly" style="cursor: text" />
         </p>
         <p>check the following boxes for your interested information:</p>
         <p>
           <input name="fieldName" type="checkbox" value="date">
           access statistics</p>
-        <p>
+       <!--  <p>
           <input name="fieldName" type="checkbox" value="userName">
-          statistics of users who used this IP</p>
+          statistics of users who used this IP</p> -->
         <p>
           <input name="fieldName" type="checkbox" value="responseStatus">
           response status statistics</p>
         <p>
-          <input type="button" value="Don't click me" onClick="javascript:document.f3.action=''; document.f3.submit();"/>
+          <input type="button" value="Don't click me" onClick="javascript:document.f3.action='SolrProxySourceIPInfo'; document.f3.submit();"/>
           <!-- SolrProxyAPIIPInfo.action -->
         </p>
     </form></td>

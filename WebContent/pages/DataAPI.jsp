@@ -4,6 +4,13 @@
 <html>
 <head>
 <title>Data API Analysis</title>
+<link href="../pages/flot/calendar.css" rel="stylesheet" type="text/css">
+ 
+<table class="ds_box" cellpadding="0" cellspacing="0" id="ds_conclass" style="display: none;">
+<tr><td id="ds_calclass">
+</td></tr>
+</table>
+<script language="javascript" type="text/javascript" src="../pages/flot/calendar.js"></script>
 </head>
 <body>
 <table width="1895" border="1">
@@ -15,10 +22,12 @@
           <label for="name">Please enter your interested time period:</label>
           <br/>
           <label for="from">Enter start time:</label>
-        <input type="date" name="from"/>
+        <!--  <input type="date" name="from"/> -->
+        <input onclick="ds_sh(this);" name="from" readonly="readonly" style="cursor: text" />
         <br/>
         <label for="to">Enter end time:</label>
-        <input type="date" name="to"/>
+        <!--  <input type="date" name="to"/> -->
+        <input onclick="ds_sh(this);" name="to" readonly="readonly" style="cursor: text" />
       </p>
 <p>check the following boxes for your interested information:</p>
         <p>
@@ -47,10 +56,12 @@
           <label for="name">Please enter your interested time peroid:</label>
           <br/>
           <label for="from">Enter start time:</label>
-          <input type="date" name="from"/>
+          <!-- <input type="date" name="from"/> -->
+           <input onclick="ds_sh(this);" name="from" readonly="readonly" style="cursor: text" />
           <br/>
           <label for="to">Enter end time:</label>
-          <input type="date" name="to"/>
+          <!-- <input type="date" name="to"/> -->
+           <input onclick="ds_sh(this);" name="to" readonly="readonly" style="cursor: text" />
         </p>
 <p>check the following boxes for your interested information:</p>
         <p>
@@ -76,10 +87,12 @@
           <label for="name">Please enter your interested time period:</label>
           <br/>
           <label for="from">Enter start time:</label>
-          <input type="date" name="from"/>
+          <!-- <input type="date" name="from"/> -->
+           <input onclick="ds_sh(this);" name="from" readonly="readonly" style="cursor: text" />
           <br/>
           <label for="to">Enter end time:</label>
-          <input type="date" name="to"/>
+          <!--  <input type="date" name="to"/> -->
+           <input onclick="ds_sh(this);" name="to" readonly="readonly" style="cursor: text" />
         </p>
         <p>check the following boxes for your interested information:</p>
         <p>
