@@ -23,6 +23,11 @@
      	  </s:iterator>
         ];
       
+      
+      for(var i=0; i<time_series_data.length; i++){
+    	  time_series_data[i][0] = time_series_data[i][0].substr(5,5);
+      }
+      
       var XForward_For_data = [
                               <s:iterator value="XForward_ForMap">
                          		 ['<s:property value="key"/>',<s:property value="value"/>],
@@ -61,7 +66,7 @@
  
 	if (data_array[0].length != 0) {
 		google.setOnLoadCallback(function() {
-			drawColumnChart(1, "LINE", data_array[0], "Zulu Time Series");
+			drawColumnChart(1, "LINE", data_array[0], "");
 		});
 	}
 /*	if (data_array[1].length != 0) {
@@ -99,8 +104,11 @@
 		data.addRows(dataSet);
 
 		var chartTitle;
-		if(info == "Zulu Time Series"){
+		if(info == ""){
 			chartTitle='Solr Proxy Daily Request Count Information from <s:property value="from"/> to <s:property value="to"/>';
+			
+			info = "*(put mouse on the curve to see request count for your interested date if it is not shown on x axis)";
+
 		}else if(info == "SOURCE_IP"){
 			chartTitle = 'Solr Proxy Request Count Information for Source IPs from <s:property value="from"/> to <s:property value="to"/>';
 		}else if(info=="XForward_For IP"){
@@ -124,7 +132,7 @@
 			vAxis:{
 				viewWindow: {min: 0},
 				
-				title : "Solr Proxy Request Count",
+				title : "Number of Requests",
 				
 				'titleTextStyle':{
 					color: 'black', fontName:'Arial', fontSize: 24
