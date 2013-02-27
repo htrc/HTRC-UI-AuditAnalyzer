@@ -44,6 +44,8 @@ public class SolrProxyGeneralAction  extends ActionSupport{
 //	private Map<String, Object> session;
 //	Map<String, Integer> dateMap;
 	protected String display;
+	protected String errorPage;
+	
 	protected String[] fieldName;
 	protected String from;
 	Map<String, Integer> ipMap;
@@ -71,7 +73,12 @@ public class SolrProxyGeneralAction  extends ActionSupport{
 	}
 
 	public String execute() {
-				
+		
+		setErrorPage("/pages/SolrProxy.jsp");
+		if (!Utility.validateInputDateOrder(from, to)) {
+			return ERROR;
+		}
+		
 			setDisplay("/pages/solrProxyAllResult.jsp");
 		
 			String input_start_UTC = Utility.convertDate2UTC(from);
@@ -212,6 +219,14 @@ public class SolrProxyGeneralAction  extends ActionSupport{
 
 	public void setTo(String to) {
 		this.to = to;
+	}
+	
+	public String getErrorPage() {
+		return errorPage;
+	}
+
+	public void setErrorPage(String errorPage) {
+		this.errorPage = errorPage;
 	}
 
 }

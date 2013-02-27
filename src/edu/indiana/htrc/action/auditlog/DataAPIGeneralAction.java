@@ -46,6 +46,8 @@ public class DataAPIGeneralAction extends ActionSupport implements SessionAware{
 	private Map<String, Object> session;
 //	Map<String, Integer> dateMap;
 	protected String display;
+	protected String errorPage;
+
 	protected String[] fieldName;
 	protected String from;
 	Map<String, Integer> ipMap;
@@ -57,80 +59,87 @@ public class DataAPIGeneralAction extends ActionSupport implements SessionAware{
 	protected String userName;
 	
 	public String execute() {
-		if(session.get("testsession") !=null){
+		if (session.get("testsession") != null) {
 			int x = (Integer) session.get("testsession");
 			session.put("testsession", ++x);
 		}
-		
-		//System.out.println("----------------------session.get(\"xx\")==null is "+session.get("xx")==null);
-		
-			setDisplay("/pages/dataAPIAllResult.jsp");
-		
-			String input_start_UTC = Utility.convertDate2UTC(from);
-			String input_end_UTC = Utility.convertDate2UTC(to);
-	
-			Solr4Connector connector = new Solr4Connector();
-			SolrServer solr_server = connector.connect();
-	
-			SolrQuery query = new SolrQuery();
-			String queryStr = "timeStamp:[" + input_start_UTC + " TO "
-					+ input_end_UTC + "]"; // " AND " + "userName:" + userName;
-			if(userName != null){
-				queryStr = queryStr +" AND " + "userName:" + userName;
-			}
-			if(sourceIP != null){
-				queryStr = queryStr +" AND " + "sourceIP:" + sourceIP;
-			}
-			
-			queryStr = queryStr + " AND " + "logName:" + "AUDIT-Log";
-			query.setQuery(queryStr).setRows(0).setFacet(true)
-					.set("facet.mincount", 1).set("facet.limit", 18)
-					.set("facet.sort", "count").set("facet.date", "timeStamp")
-					.set("f.timeStamp.facet.date.start", input_start_UTC)
-					.set("f.timeStamp.facet.date.end", input_end_UTC)
-					.set("f.timeStamp.facet.date.gap", "+1DAY")
-					.set("f.timeStamp.facet.mincount", 0).set("facet.field", fieldName); 
-	
-			QueryResponse query_response = null;
-	
-			try {
-				// logger.debug("solr_server == null is " + solr_server == null);
-				query_response = solr_server.query(query);
-	
-			} catch (SolrServerException e) {
-				// logger.debug("solr_server == null is " + solr_server == null);
-				e.printStackTrace();
-			}
-	
-			// ///////////////////generate charts/////////////////////////////////////////
-			List<FacetField> facet_field_list = query_response.getFacetFields();
-	
-			for (int i = 0; i < facet_field_list.size(); i++) {
-	
-				FacetField facet_field = facet_field_list.get(i);
-				String field_name = facet_field.getName();
-				
-				Map<String, Integer> map = Utility.getFacetFieldAsMap(facet_field);
-	
-				if(field_name.equals("date")){
-					FacetField facet_date = query_response.getFacetDate("timeStamp"); 
-					
-					Map<String, Integer> UTC_detail_time_map = Utility.getFacetFieldAsMap(facet_date);
-					Map<String, Integer> UTC_YMD_map = Utility.convertMapFromUTCDetail2UTCYMD(UTC_detail_time_map);
-					
-					setTimeIntervalMap(UTC_YMD_map);
-					//setDateMap(map);
-				}else if(field_name.equals("sourceIP")){
-					setIpMap(map);
-				}else if(field_name.equals("responseStatus")){
-					setResponseStatusMap(map);
-				}else if(field_name.equals("userName")){
-					setUserMap(map);
-				}
-			}
-			connector.disconnect();
-			return SUCCESS;
+
+		setErrorPage("/pages/DataAPI.jsp");
+		if (!Utility.validateInputDateOrder(from, to)) {
+			return ERROR;
 		}
+
+		setDisplay("/pages/dataAPIAllResult.jsp");
+		String input_start_UTC = Utility.convertDate2UTC(from);
+		String input_end_UTC = Utility.convertDate2UTC(to);
+
+		Solr4Connector connector = new Solr4Connector();
+		SolrServer solr_server = connector.connect();
+
+		SolrQuery query = new SolrQuery();
+		String queryStr = "timeStamp:[" + input_start_UTC + " TO "
+				+ input_end_UTC + "]"; // " AND " + "userName:" + userName;
+		if (userName != null) {
+			queryStr = queryStr + " AND " + "userName:" + userName;
+		}
+		if (sourceIP != null) {
+			queryStr = queryStr + " AND " + "sourceIP:" + sourceIP;
+		}
+
+		queryStr = queryStr + " AND " + "logName:" + "AUDIT-Log";
+		query.setQuery(queryStr).setRows(0).setFacet(true)
+				.set("facet.mincount", 1).set("facet.limit", 18)
+				.set("facet.sort", "count").set("facet.date", "timeStamp")
+				.set("f.timeStamp.facet.date.start", input_start_UTC)
+				.set("f.timeStamp.facet.date.end", input_end_UTC)
+				.set("f.timeStamp.facet.date.gap", "+1DAY")
+				.set("f.timeStamp.facet.mincount", 0)
+				.set("facet.field", fieldName);
+
+		QueryResponse query_response = null;
+
+		try {
+			// logger.debug("solr_server == null is " + solr_server == null);
+			query_response = solr_server.query(query);
+
+		} catch (SolrServerException e) {
+			// logger.debug("solr_server == null is " + solr_server == null);
+			e.printStackTrace();
+		}
+
+		// ///////////////////generate
+		// charts/////////////////////////////////////////
+		List<FacetField> facet_field_list = query_response.getFacetFields();
+
+		for (int i = 0; i < facet_field_list.size(); i++) {
+
+			FacetField facet_field = facet_field_list.get(i);
+			String field_name = facet_field.getName();
+
+			Map<String, Integer> map = Utility.getFacetFieldAsMap(facet_field);
+
+			if (field_name.equals("date")) {
+				FacetField facet_date = query_response
+						.getFacetDate("timeStamp");
+
+				Map<String, Integer> UTC_detail_time_map = Utility
+						.getFacetFieldAsMap(facet_date);
+				Map<String, Integer> UTC_YMD_map = Utility
+						.convertMapFromUTCDetail2UTCYMD(UTC_detail_time_map);
+
+				setTimeIntervalMap(UTC_YMD_map);
+				// setDateMap(map);
+			} else if (field_name.equals("sourceIP")) {
+				setIpMap(map);
+			} else if (field_name.equals("responseStatus")) {
+				setResponseStatusMap(map);
+			} else if (field_name.equals("userName")) {
+				setUserMap(map);
+			}
+		}
+		connector.disconnect();
+		return SUCCESS;
+	}
 	
 	/*public Map<String, Integer> getDateMap() {
 		return dateMap;
@@ -219,7 +228,13 @@ public class DataAPIGeneralAction extends ActionSupport implements SessionAware{
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+	public String getErrorPage() {
+		return errorPage;
+	}
 
+	public void setErrorPage(String errorPage) {
+		this.errorPage = errorPage;
+	}
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session=session;

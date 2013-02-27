@@ -25,14 +25,14 @@
 			class="edu.indiana.htrc.action.auditlog.DataAPIGeneralAnalysisAction" method="execute">
 
 			<result name="success">${display}</result>
-
+			<result name="error">${errorPage}</result>
 		</action>
 		
 		<action name="solrProxyAPIGeneralInfo"
 			class="edu.indiana.htrc.action.solrproxylog.SolrProxyAPIGeneralAnalysisAction" method="execute">
 
 			<result name="success">${display}</result>
-
+			<result name="error">${errorPage}</result>
 		</action>
 		
 
@@ -40,20 +40,21 @@
 			class="edu.indiana.htrc.action.auditlog.DataAPIUserAnalysisAction" method="execute">
 
 			<result name="success">${display}</result>
-
+			<result name="error">${errorPage}</result>
 		</action>
 
 		<action name="dataAPIIPInfo"
 			class="edu.indiana.htrc.action.auditlog.DataAPIsourceIPAnalysisAction" method="execute">
 
 			<result name="success">${display}</result>
+			<result name="error">${errorPage}</result>
 
 		</action>
 		<action name="SolrProxySourceIPInfo"
 			class="edu.indiana.htrc.action.solrproxylog.SolrProxysourceIPAnalysisAction" method="execute">
 
 			<result name="success">${display}</result>
-
+			<result name="error">${errorPage}</result>
 		</action>
 		<action name="dataAPIGeneralInfoJS"
 			class="edu.indiana.htrc.action.auditlog.DataAPIUserAnalysisActionJS" method="execute">

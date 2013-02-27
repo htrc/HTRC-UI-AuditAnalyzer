@@ -213,4 +213,12 @@ public class Utility {
 		return stdout.toString();
 		
 	}
+
+	public static boolean validateInputDateOrder(String from, String to) {
+
+		if(from.compareTo(to)>0){
+			return false;
+		}else
+			return true;
+	}
 }
