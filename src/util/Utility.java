@@ -98,7 +98,6 @@ public class Utility {
 		}
 
 		return error_count_map;
-
 	}
 
 	public static void printMap(Map<String, Integer> error_count_map,

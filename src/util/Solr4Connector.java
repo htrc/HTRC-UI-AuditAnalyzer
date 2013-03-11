@@ -51,49 +51,6 @@ public class Solr4Connector {
 		}
 		
 		return solr_server;
-		
-	/*	SolrQuery query = new SolrQuery();
-		//String term_q = "timeStamp:[2012-09-07T01:20:37Z TO 2012-11-07T01:20:37.427Z]";
-		String term_q = "*:*";
-		query.setQuery(term_q );
-		//query.setQueryType("sharding");
-		//query.setRows(224918);
-		//query.setRows(24918);
-		//query.setStart(224918);
-		query.setRows(50000);
-		query.setFields("id");
-		query.setFacet(b)
-		
-		try
-		{
-			QueryResponse query_response = solr_server.query(query);
-			
-			SolrDocumentList solr_doc_list = query_response.getResults();
-			
-			System.out.println(solr_doc_list.getNumFound()+ "hits found !!");
-			
-			Iterator<SolrDocument> iterator = solr_doc_list.iterator();
-			
-			while(iterator.hasNext())
-			{
-				SolrDocument temp_solr_doc = (SolrDocument)iterator.next();
-				
-				pw.println(temp_solr_doc.getFieldValue("id"));
-				pw.flush();
-				System.out.println(temp_solr_doc.getFieldValue("author"));
-				System.out.println(temp_solr_doc.getFieldValue("title"));
-				System.out.println(temp_solr_doc.getFieldValue("id"));
-				System.out.println(temp_solr_doc.getFieldValue("rights"));
-				System.out.println(temp_solr_doc.getFieldValue("date"));
-				
-				System.out.println("--------------------------------");
-				
-			}
-			
-		}catch(Exception e)
-		{
-			e.printStackTrace();
-		}		*/
 	}
 	
 	public void disconnect(){
