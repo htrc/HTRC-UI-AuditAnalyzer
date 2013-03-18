@@ -16,7 +16,7 @@
 #
 # -----------------------------------------------------------------
 #
-# Project: SF-HTRC-UI-AuditAnalyzer-trunk
+# Project: HTRC-UI-AuditAnalyzer
 # File:  UtilityTest.java
 # Description: TODO
 #
