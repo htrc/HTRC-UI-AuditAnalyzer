@@ -44,19 +44,35 @@ public class ChooseComponentAction extends ActionSupport implements SessionAware
 	private String page;
 	
 	//private String[] 
-	
+	/**
+	 * 
+	 * @return page
+	 */
 	public String getPage() {
 		return page;
 	}
-
+	
+	/**
+	 * set page
+	 * @param page
+	 */
 	public void setPage(String page) {
 		this.page = page;
 	}
 
+	/**
+	 * 
+	 * @return component 
+	 */
 	public int getComponent() {
 		return component;
 	}
 
+	/**
+	 * set component
+	 * 
+	 * @param component
+	 */
 	public void setComponent(int component) {
 		this.component = component;
 	}

@@ -45,9 +45,13 @@ public class ConfigManager {
 		}
 	}
 	
+	/**
+	 * get property value based on property name
+	 * 
+	 * @param key property name
+	 * @return property value
+	 */
 	public static String getProperty(String key){
 		return properties.getProperty(key);
 	}
-	
-
 }

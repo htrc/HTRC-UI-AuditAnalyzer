@@ -44,6 +44,10 @@ public class DataAPIAccessRealTimeMonitorAction extends ActionSupport{
 
 	private InputStream inputStream;
 	 
+	/**
+	 * get input stream
+	 * @return input stream
+	 */
     public InputStream getInputStream() {
         return inputStream;
     }

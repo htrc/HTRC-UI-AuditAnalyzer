@@ -39,6 +39,11 @@ public class Solr4Connector {
 
 	private SolrServer solr_server;
 
+	/**
+	 * get http connection to solr4 instance
+	 * 
+	 * @return SolrServer object that represents the connection to solr 4 instance and helps communicate with solr4 instance
+	 */
 	public SolrServer connect(){
 				//server.set
 		
@@ -53,6 +58,9 @@ public class Solr4Connector {
 		return solr_server;
 	}
 	
+	/**
+	 * disconnect the http connection to solr4 instance
+	 */
 	public void disconnect(){
 		solr_server.shutdown();
 	}

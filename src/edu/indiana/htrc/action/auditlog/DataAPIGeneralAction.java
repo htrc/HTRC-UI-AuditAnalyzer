@@ -144,43 +144,82 @@ public class DataAPIGeneralAction extends ActionSupport implements SessionAware{
 	/*public Map<String, Integer> getDateMap() {
 		return dateMap;
 	}*/
-	
+	/**
+	 * 
+	 * @return display page
+	 */
 	public String getDisplay() {
 		return display;
 	}
 
+	/**
+	 * get all field names from check list
+	 * @return field names as an array
+	 */
 	public String[] getFieldName() {
 		return fieldName;
 	}
 	
+	/**
+	 * get start date string
+	 * @return start date string
+	 */
 	public String getFrom() {
 		return from;
 	}
 
+	/**
+	 * get source IP to access count map 
+	 * @return source IP to access count map 
+	 */
 	public Map<String, Integer> getIpMap() {
 		return ipMap;
 	}
 
+	/**
+	 * 
+	 * @return map that maps response status to access count
+	 */
 	public Map<String, Integer> getResponseStatusMap() {
 		return responseStatusMap;
 	}
 
+	/**
+	 * 
+	 * @return source IP
+	 */
 	public String getSourceIP() {
 		return sourceIP;
 	}
 
+	/**
+	 * 
+	 * @return timeIntervalMap that maps time intervals to access counts
+	 */
 	public Map<String, Integer> getTimeIntervalMap() {
 		return timeIntervalMap;
 	}
 
+	/**
+	 * get end time 
+	 * @return end time
+	 */
 	public String getTo() {
 		return to;
 	}
 
+	/**
+	 * get user map
+	 * @return user map that maps user names to access counts
+	 */
 	public Map<String, Integer> getUserMap() {
 		return userMap;
 	}
 
+	/**
+	 *  
+	 * @return username
+	 */
 	public String getUserName() {
 		return userName;
 	}
@@ -189,49 +228,99 @@ public class DataAPIGeneralAction extends ActionSupport implements SessionAware{
 		this.dateMap = dateMap;
 	}*/
 
+	/**
+	 * set display jsp page
+	 * @param display the display jsp page
+	 */
 	public void setDisplay(String display) {
 		this.display = display;
 	}
 
+	/**
+	 * set field names to fieldName array to facet query solr4
+	 * @param fieldName the array that contains all wanted field names
+	 */
 	public void setFieldName(String[] fieldName) {
 		this.fieldName = fieldName;
 	}
 
+	/** 
+	 * set start time
+	 * @param from start time
+	 */
 	public void setFrom(String from) {
 		this.from = from;
 	}
 
+	/**
+	 * set ipMap
+	 * 
+	 * @param ipMap that maps source IP to access count
+	 */
 	public void setIpMap(Map<String, Integer> ipMap) {
 		this.ipMap = ipMap;
 	}
 
+	/**
+	 * set responseStatusMap
+	 * @param responseStatusMap that maps response status to access count
+	 */
 	public void setResponseStatusMap(Map<String, Integer> responseStatusMap) {
 		this.responseStatusMap = responseStatusMap;
 	}
 
+	/**
+	 * set source IP 
+	 * @param sourceIP where the request come from
+	 */
 	public void setSourceIP(String sourceIP) {
 		this.sourceIP = sourceIP;
 	}
 
+	/**
+	 * set timeIntervalMap
+	 * @param timeIntervalMap that maps time intervals to access counts
+	 */
 	public void setTimeIntervalMap(Map<String, Integer> timeIntervalMap) {
 		this.timeIntervalMap = timeIntervalMap;
 	}
 
+	/**
+	 * set end time
+	 * @param to end time
+	 */
 	public void setTo(String to) {
 		this.to = to;
 	}
 
+	/**
+	 * set user map
+	 * @param userMap that maps user name to access count
+	 */
 	public void setUserMap(Map<String, Integer> userMap) {
 		this.userMap = userMap;
 	}
 
+	/**
+	 * set user name
+	 * @param userName user name
+	 */
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+	
+	/**
+	 * get jsp page for error handling
+	 * @return error page
+	 */
 	public String getErrorPage() {
 		return errorPage;
 	}
 
+	/**
+	 * set error page for error handling
+	 * @param errorPage error page
+	 */
 	public void setErrorPage(String errorPage) {
 		this.errorPage = errorPage;
 	}

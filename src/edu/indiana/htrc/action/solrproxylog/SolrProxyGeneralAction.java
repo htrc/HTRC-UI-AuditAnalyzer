@@ -56,18 +56,34 @@ public class SolrProxyGeneralAction  extends ActionSupport{
 	protected String XForward_For;
 	Map<String, Integer> XForward_ForMap;
 	
+	/**
+	 * get X-Forwarded-For map
+	 * @return X-Forwarded-For map that maps X-Forwarded-For ip address to access count
+	 */
 	public Map<String, Integer> getXForward_ForMap() {
 		return XForward_ForMap;
 	}
 
+	/**
+	 * set X-Forwarded-For map
+	 * @param xForward_ForMap map that maps X-Forwarded-For ip address to access count
+	 */
 	public void setXForward_ForMap(Map<String, Integer> xForward_ForMap) {
 		XForward_ForMap = xForward_ForMap;
 	}
 
+	/**
+	 * get X-Forwarded-For(user specified in text field) 
+	 * @return X-Forwarded-For ip address
+	 */
 	public String getXForward_For() {
 		return XForward_For;
 	}
 
+	/**
+	 * set xForward_For
+	 * @param xForward_For xForward_For ip address
+	 */
 	public void setXForward_For(String xForward_For) {
 		XForward_For = xForward_For;
 	}
@@ -152,34 +168,66 @@ public class SolrProxyGeneralAction  extends ActionSupport{
 		return dateMap;
 	}*/
 	
+	/**
+	 * get display page
+	 * @return the display jsp page
+	 */
 	public String getDisplay() {
 		return display;
 	}
 
+	/**
+	 * get field names that need to be facet searched
+	 * @return field names in a array
+	 */
 	public String[] getFieldName() {
 		return fieldName;
 	}
 	
+	/**
+	 * get start time
+	 * @return start time
+	 */
 	public String getFrom() {
 		return from;
 	}
 
+	/**
+	 * get ip map
+	 * @return ip map that maps source IP to access count
+	 */
 	public Map<String, Integer> getIpMap() {
 		return ipMap;
 	}
 
+	/**
+	 * get response status map
+	 * @return response status map that maps response status to access count
+	 */
 	public Map<String, Integer> getResponseStatusMap() {
 		return responseStatusMap;
 	}
 
+	/**
+	 * get source IP
+	 * @return source IP
+	 */
 	public String getSourceIP() {
 		return sourceIP;
 	}
 
+	/**
+	 * get time interval map
+	 * @return time interval map that maps each time interval to its access counts in that interval
+	 */
 	public Map<String, Integer> getTimeIntervalMap() {
 		return timeIntervalMap;
 	}
 
+	/**
+	 * get end time
+	 * @return end time
+	 */
 	public String getTo() {
 		return to;
 	}
@@ -189,42 +237,88 @@ public class SolrProxyGeneralAction  extends ActionSupport{
 		this.dateMap = dateMap;
 	}*/
 
+	/**
+	 * set display page
+	 * 
+	 * @param display the display page
+	 */
 	public void setDisplay(String display) {
 		this.display = display;
 	}
 
+	/**
+	 * set field names to facet on
+	 * 
+	 * @param fieldName a array that contains filed names to facet on
+	 */
 	public void setFieldName(String[] fieldName) {
 		this.fieldName = fieldName;
 	}
 
+	/**
+	 * set start time
+	 * @param from start time
+	 */
 	public void setFrom(String from) {
 		this.from = from;
 	}
 
+	/**
+	 * set ip map
+	 * 
+	 * @param ipMap ip map that maps source IP to access count from this IP
+	 */
 	public void setIpMap(Map<String, Integer> ipMap) {
 		this.ipMap = ipMap;
 	}
 
+	/**
+	 * get response status map
+	 * 
+	 * @param responseStatusMap response status map that maps each response status to its corresponding access count 
+	 */
 	public void setResponseStatusMap(Map<String, Integer> responseStatusMap) {
 		this.responseStatusMap = responseStatusMap;
 	}
 
+	/**
+	 * set source IP
+	 * 
+	 * @param sourceIP source IP
+	 */
 	public void setSourceIP(String sourceIP) {
 		this.sourceIP = sourceIP;
 	}
 
+	/**
+	 * set time interval map 
+	 * 
+	 * @param timeIntervalMap time interval map that maps each time interval to the access count during this interval
+	 */
 	public void setTimeIntervalMap(Map<String, Integer> timeIntervalMap) {
 		this.timeIntervalMap = timeIntervalMap;
 	}
 
+	/**
+	 * set end time
+	 * @param to end time
+	 */
 	public void setTo(String to) {
 		this.to = to;
 	}
 	
+	/**
+	 * get error page for error handling
+	 * @return error page
+	 */
 	public String getErrorPage() {
 		return errorPage;
 	}
 
+	/**
+	 * set error page for error handling
+	 * @param errorPage error page
+	 */
 	public void setErrorPage(String errorPage) {
 		this.errorPage = errorPage;
 	}

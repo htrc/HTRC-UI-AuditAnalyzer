@@ -39,6 +39,11 @@ public class SolrProxyAccessRealTimeMonitorAction extends ActionSupport{
 
 	private InputStream inputStream;
 	 
+	
+	/**
+	 * get inputStream
+	 * @return inputStream for real time data in ajax effect 
+	 */
     public InputStream getInputStream() {
         return inputStream;
     }

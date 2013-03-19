@@ -134,6 +134,11 @@ public class Utility {
 	    }
 	}
 
+	/**
+	 * convert user input date into UTC date string
+	 * @param input_dateStr user input date string
+	 * @return UTC date string
+	 */
 	public static String convertDate2UTC(String input_dateStr) {
 		
 		Date date = null;
@@ -150,6 +155,12 @@ public class Utility {
 		return utc_time;
 	}
 	
+	/**
+	 * fill the name and count information of a facet field into a Map
+	 * 
+	 * @param facet_field the facet field where name and count info are got from
+	 * @return the map that maps name to its count
+	 */
 	public static Map<String, Integer>getFacetFieldAsMap(FacetField facet_field){
 	//	String field_name = facet_field.getName();
 		List<Count> item = facet_field.getValues();
@@ -164,6 +175,11 @@ public class Utility {
 		return map;
 	}
 
+	/**
+	 * convert the keys in UTC_detail_time_map from detailed format, e.g. 2012-08-06T00:01:58.877Z into simple format, e.g. 2012-08-06
+	 * @param UTC_detail_time_map map with keys in detailed date format
+	 * @return map with keys in simple date format
+	 */
 	public static Map<String, Integer> convertMapFromUTCDetail2UTCYMD(Map<String, Integer> UTC_detail_time_map) {
 		
 		Set<String> keyset = UTC_detail_time_map.keySet();
@@ -181,6 +197,12 @@ public class Utility {
 		return return_map;
 	}
 	
+	/**
+	 * command line execution
+	 * 
+	 * @param line command line
+	 * @return output string of running this command line
+	 */
 	public static String exec(String line){
 		
 //String line = "wc -l " + "/home/hathitrust/solr/ToVM_Solr_related/test/apache-tomcat-6.0.35/bin/proxy_logs/logfile";
@@ -213,6 +235,13 @@ public class Utility {
 		
 	}
 
+	/**
+	 * validate if the user input start date is prior to the end date 
+	 * 
+	 * @param from user input start date
+	 * @param to user input end date
+	 * @return true if start date is prior or equal to the end date. otherwise, return false.
+	 */
 	public static boolean validateInputDateOrder(String from, String to) {
 
 		if(from.compareTo(to)>0){
