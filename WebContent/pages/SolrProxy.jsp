@@ -72,7 +72,7 @@
           <input name="fieldName" type="checkbox" value="responseStatus">
           response status statistics</p>
         <p>
-          <input type="button" value="Don't click me" onClick="javascript:document.f3.action='SolrProxySourceIPInfo'; document.f3.submit();"/>
+          <input type="button" value="view info" onClick="javascript:document.f3.action='SolrProxySourceIPInfo'; document.f3.submit();"/>
           <!-- SolrProxyAPIIPInfo.action -->
         </p>
     </form></td>
