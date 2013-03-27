@@ -91,6 +91,6 @@
     <td>&nbsp;</td>
   </tr>
 </table>
-<s:debug />
+<%-- <s:debug /> --%>
 </body>
 </html>

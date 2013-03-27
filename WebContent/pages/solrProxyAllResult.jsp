@@ -160,7 +160,7 @@
 	<div id="chart_div3"></div>
 	<div id="chart_div4"></div>
 	
-	<a href="http://localhost:8080/HTRC-UI-AuditAnalyzer/">go back</a>
-	<s:debug />
+	<!-- <a href="http://localhost:8080/HTRC-UI-AuditAnalyzer/">go back</a> -->
+	<%-- <s:debug /> --%>
 </body>
 </html>

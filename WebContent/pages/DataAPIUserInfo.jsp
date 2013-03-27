@@ -32,6 +32,6 @@
    		<br />
    </s:iterator>
    
-	<s:debug />
+	<%-- <s:debug /> --%>
 </body>
 </html>

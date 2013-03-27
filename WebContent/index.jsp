@@ -21,6 +21,6 @@
        <input type="submit" value="Submit">
      </p>
  </form>
- <s:debug />
+ <%-- <s:debug /> --%>
 </body>
 </html>

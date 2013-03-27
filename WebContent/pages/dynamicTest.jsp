@@ -127,6 +127,6 @@ xmlhttp.send();
 <div id="chart_div2"></div>
 <div id="chart_div3"></div>
 <div id="chart_div4"></div>
-<s:debug/>
+<%-- <s:debug/> --%>
 </body>
 </html>
