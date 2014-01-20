@@ -4,6 +4,8 @@
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.6"/>
     <property name="source" value="1.6"/>
+    <property name="build.dir" value="${basedir}/build"/>
+    <property name="dist.dir" value="${basedir}/dist"/>
     <path id="Web App Libraries.libraryclasspath">
         <pathelement location="WebContent/WEB-INF/lib/apache-solr-analysis-extras-4.0.0.jar"/>
         <pathelement location="WebContent/WEB-INF/lib/apache-solr-cell-4.0.0.jar"/>
@@ -46,7 +48,7 @@
         <pathelement location="WebContent/WEB-INF/lib/zookeeper-3.3.6.jar"/>
     </path>
     <path id="HTRC-UI-AuditAnalyzer.classpath">
-        <pathelement location="build/classes"/>
+        <pathelement location="${build.dir}/classes"/>
         <path refid="Web App Libraries.libraryclasspath"/>
         <pathelement location="WebContent/WEB-INF/lib/apache-solr-analysis-extras-4.0.0.jar"/>
         <pathelement location="WebContent/WEB-INF/lib/apache-solr-cell-4.0.0.jar"/>
@@ -89,20 +91,23 @@
         <pathelement location="WebContent/WEB-INF/lib/commons-exec-1.1.jar"/>
     </path>
     <target name="init">
-        <mkdir dir="build/classes"/>
-        <copy includeemptydirs="false" todir="build/classes">
+        <mkdir dir="${build.dir}/classes"/>
+        <copy includeemptydirs="false" todir="${build.dir}/classes">
             <fileset dir="src">
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
     </target>
-    <target name="clean">
-        <delete dir="build/classes"/>
+    <target name="clean" description="delete all the build artifacts">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
     </target>
     <target depends="clean" name="cleanall"/>
-    <target depends="build-subprojects,build-project" name="build">
-    	<war destfile="HTRC-UI-AuditAnalyzer.war" webxml="WebContent/WEB-INF/web.xml" update="true">
-    		<classes dir="build/classes" />
+    <target depends="build-subprojects,build-project" name="build" description="build the entire project"/>
+    <target depends="build" name="dist" description="create the deployment package">
+        <mkdir dir="${dist.dir}"/>
+    	<war destfile="${dist.dir}/HTRC-UI-AuditAnalyzer.war" webxml="WebContent/WEB-INF/web.xml" update="true">
+    		<classes dir="${build.dir}/classes" />
     			<fileset dir="WebContent">
     				<exclude name="WEB-INF/web.xml" />
     			</fileset>
@@ -111,7 +116,7 @@
     <target name="build-subprojects"/>
     <target depends="init" name="build-project">
         <echo message="${ant.project.name}: ${ant.file}"/>
-        <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" includeantruntime="false" source="${source}" target="${target}">
+        <javac debug="true" debuglevel="${debuglevel}" destdir="${build.dir}/classes" includeantruntime="false" source="${source}" target="${target}">
             <src path="src"/>
             <classpath refid="HTRC-UI-AuditAnalyzer.classpath"/>
         </javac>
